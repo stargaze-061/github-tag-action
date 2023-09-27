@@ -1,0 +1,61 @@
+version: '3'
+services:
+  app:
+    build: .
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true 
+    working_dir: /repo
+    volumes:
+       - /Users/givip/JoyLabs/git_tests:/repo
+    environment:
+      VERBOSE: false
+      DRY_RUN: true
+      GIT_API_TAGGING: false
+      GITHUB_WORKSPACE: /repo
+      GITHUB_OUTPUT: /github_output_log
+
+     #develop config
+      # RELEASE_BRANCHES: master
+      # DEFAULT_BRANCH: master
+      # WITH_V: true
+      # DEFAULT_BUMP: none
+      # BUILD_NUMBER: true
+      # INITIAL_BUILD_NUMDER: 0
+      # TAG_CONTEXT: repo
+      # PRERELEASE: true
+      # PRERELEASE_SUFFIX: dev
+      # PRERELEASE_VERSION: false
+
+    #release config
+      # RELEASE_BRANCHES: master
+      # DEFAULT_BRANCH: master
+      # WITH_V: true
+      # DEFAULT_BUMP: none
+      # BUILD_NUMBER: true
+      # INITIAL_BUILD_NUMDER: 0
+      # TAG_CONTEXT: repo
+      # PRERELEASE: true
+      # PRERELEASE_SUFFIX: rc
+      # PRERELEASE_VERSION: true
+
+    #hotfix config
+      # RELEASE_BRANCHES: master
+      # DEFAULT_BRANCH: master
+      # WITH_V: true
+      # DEFAULT_BUMP: none
+      # BUILD_NUMBER: true
+      # INITIAL_BUILD_NUMDER: 0
+      # TAG_CONTEXT: repo
+      # PRERELEASE: true
+      # PRERELEASE_SUFFIX: hotfix
+      # PRERELEASE_VERSION: false
+
+    #master config
+      RELEASE_BRANCHES: master
+      DEFAULT_BRANCH: master
+      WITH_V: true
+      DEFAULT_BUMP: none
+      BUILD_NUMBER: true
+      INITIAL_BUILD_NUMDER: 0
+      TAG_CONTEXT: repo
